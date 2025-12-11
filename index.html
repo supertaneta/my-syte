@@ -3,55 +3,471 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>私のWebページ</title>
+  <title>My Syte | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #060912;
+      --panel: rgba(18, 24, 38, 0.72);
+      --glow: #7ae0ff;
+      --glow-2: #ffd166;
+      --muted: #b8c7e3;
+      --text: #f6f7fb;
+      --accent: #82f3d0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: system-ui, sans-serif;
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #f8fafc;
+      background: radial-gradient(circle at 20% 20%, rgba(130, 243, 208, 0.12), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(122, 224, 255, 0.2), transparent 32%),
+        radial-gradient(circle at 50% 80%, rgba(255, 209, 102, 0.18), transparent 30%),
+        var(--bg);
+      color: var(--text);
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 2.5rem 1.5rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 35%);
+      pointer-events: none;
     }
 
     main {
-      max-width: 640px;
-      text-align: center;
-      padding: 2rem;
-      background: rgba(15, 23, 42, 0.85);
-      border-radius: 0.75rem;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+      width: min(1100px, 100%);
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 22px;
+      box-shadow:
+        0 18px 60px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.02),
+        0 40px 90px rgba(122, 224, 255, 0.08);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      filter: blur(60px);
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    .glow.one {
+      width: 320px;
+      height: 320px;
+      background: rgba(130, 243, 208, 0.4);
+      top: -80px;
+      left: -60px;
+    }
+
+    .glow.two {
+      width: 260px;
+      height: 260px;
+      background: rgba(122, 224, 255, 0.35);
+      bottom: -40px;
+      right: 50px;
+    }
+
+    .glow.three {
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 209, 102, 0.35);
+      bottom: 160px;
+      left: 38%;
+    }
+
+    .grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 120px 120px;
+      opacity: 0.3;
+      mask-image: radial-gradient(circle at 50% 40%, black 40%, transparent 65%);
+      pointer-events: none;
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      width: fit-content;
+    }
+
+    .badge-dot {
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--glow);
     }
 
     h1 {
-      margin-bottom: 0.5rem;
-      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0;
+      font-size: clamp(2.6rem, 6vw, 3.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
     }
 
-    p {
-      line-height: 1.6;
-      margin-bottom: 1rem;
+    .gradient-text {
+      background: linear-gradient(120deg, #fff, var(--accent), var(--glow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    a {
-      color: #38bdf8;
-      text-decoration: none;
+    .lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0.6rem 0 0;
+      max-width: 720px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+
+    .btn {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text);
+      padding: 0.75rem 1.2rem;
+      border-radius: 999px;
       font-weight: 600;
+      letter-spacing: 0.01em;
+      background: rgba(255, 255, 255, 0.03);
+      text-decoration: none;
+      transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
     }
 
-    a:hover {
-      color: #67e8f9;
+    .btn.primary {
+      background: linear-gradient(120deg, #82f3d0, #7ae0ff);
+      color: #051019;
+      box-shadow: 0 12px 30px rgba(122, 224, 255, 0.32);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(122, 224, 255, 0.2);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .btn.primary:hover {
+      background: linear-gradient(120deg, #7ae0ff, #ffd166);
+    }
+
+    .stats {
+      margin-top: 1.2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      display: grid;
+      gap: 0.3rem;
+    }
+
+    .stat-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+      margin-top: 2.4rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .section-title::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glow));
+      opacity: 0.8;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      padding: 1.2rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+      display: grid;
+      gap: 0.6rem;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 22px 60px rgba(122, 224, 255, 0.16);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.9rem;
+    }
+
+    .pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(120deg, var(--glow), var(--glow-2));
+      box-shadow: 0 0 10px var(--glow);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .step {
+      position: relative;
+      padding-left: 1.6rem;
+    }
+
+    .step::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(120deg, var(--glow), var(--accent));
+      box-shadow: 0 0 12px var(--glow);
+      left: 0;
+      top: 0.25rem;
+    }
+
+    .step h4 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .step p {
+      margin: 0.2rem 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #fff;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .chip:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 1.2rem 1rem 2rem;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 8vw, 3rem);
+      }
+
+      .stats {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      }
     }
   </style>
 </head>
 <body>
   <main>
-    <h1>ようこそ</h1>
-    <p>このサイトはGitHub Pagesで公開する自己紹介とポートフォリオです。</p>
-    <p>シンプルで軽量なデザインにこだわり、必要な情報がすぐに伝わる構成を目指しています。</p>
-    <p>最新の進捗やプロジェクトは<a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>でご覧ください。</p>
+    <span class="glow one"></span>
+    <span class="glow two"></span>
+    <span class="glow three"></span>
+    <div class="grid-lines"></div>
+
+    <header>
+      <div class="badge"><span class="badge-dot"></span> Portfolio / Playground</div>
+      <h1><span class="gradient-text">ようこそ</span>、創ることが好きなデベロッパーです。</h1>
+      <p class="lead">アイデアを光らせるUI、スケールするアーキテクチャ、チームで回せる開発体験を設計しています。プロトタイプから本番運用まで、デザインとコードの間を滑らかに橋渡しするのが得意です。</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/" target="_blank" rel="noreferrer">GitHubを見る</a>
+        <a class="btn" href="#projects">最近のしごと</a>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value">15+</div>
+          <div class="stat-label">リリースしたプロダクト</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">12年</div>
+          <div class="stat-label">Web開発経験</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">SRE/FE</div>
+          <div class="stat-label">強みの領域</div>
+        </div>
+      </div>
+    </header>
+
+    <section id="focus">
+      <div class="section-title">Focus</div>
+      <div class="grid">
+        <div class="card">
+          <div class="pill">UI/UX</div>
+          <h3>心地よいプロダクト体験</h3>
+          <p>余白・タイポグラフィ・トーンを丁寧に設計し、ブランドの軸が通ったUIを素早く形にします。</p>
+        </div>
+        <div class="card">
+          <div class="pill">Architecture</div>
+          <h3>持続可能なコードベース</h3>
+          <p>モジュール設計やリリースフローの整備で、チームが安心して開発できる土台を作ります。</p>
+        </div>
+        <div class="card">
+          <div class="pill">Delivery</div>
+          <h3>計測と改善のサイクル</h3>
+          <p>データを見ながら高速に改善。CI/CDと監視で、仕組みごと磨いていきます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">Highlights</div>
+      <div class="grid">
+        <div class="card">
+          <h3>Design System Revamp</h3>
+          <p>コンポーネント指向のデザインシステムを刷新し、アクセシビリティとブランド一貫性を両立。</p>
+        </div>
+        <div class="card">
+          <h3>Realtime Collaboration</h3>
+          <p>WebSocketとCRDTでリアルタイム共同編集を実装。レイテンシと整合性を両立させる仕組みを設計。</p>
+        </div>
+        <div class="card">
+          <h3>Cloud Native Migration</h3>
+          <p>レガシー環境をKubernetesに移行し、SLOベースの運用と自動化を整備してサービスを安定化。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="section-title">Recent</div>
+      <div class="timeline">
+        <div class="step">
+          <h4>2024 — プロダクトリード</h4>
+          <p>新規B2B SaaSの立ち上げで、要件整理からUI/インフラ設計、チームの開発プロセス設計まで担当。</p>
+        </div>
+        <div class="step">
+          <h4>2023 — DX基盤の整備</h4>
+          <p>モノレポ化とLint/CIの統合、リリースフローの自動化でリードタイムを半減。</p>
+        </div>
+        <div class="step">
+          <h4>2022 — グロース施策</h4>
+          <p>ABテスト基盤とイベント設計を刷新し、主要KPIを安定的に改善できる仕組みに。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="links">
+      <div class="section-title">Connect</div>
+      <div class="links">
+        <a class="chip" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="chip" href="mailto:hello@example.com">Email</a>
+        <a class="chip" href="#focus">Services</a>
+      </div>
+    </section>
   </main>
 </body>
 </html>
