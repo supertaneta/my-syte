@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Syte | Portfolio</title>
+  <title>コンサル道場 | 1DAY ブートキャンプ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
       color: var(--text);
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       padding: 2.5rem 1.5rem 3.5rem;
       position: relative;
       overflow-x: hidden;
@@ -110,7 +110,17 @@
       position: relative;
       z-index: 1;
       display: grid;
-      gap: 1.5rem;
+      gap: 1.2rem;
+    }
+
+    .hero {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .hero-top {
+      display: grid;
+      gap: 0.4rem;
     }
 
     .badge {
@@ -199,24 +209,38 @@
       gap: 0.75rem;
     }
 
-    .stat {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 14px;
-      padding: 1rem 1.1rem;
+    .meta-grid {
       display: grid;
-      gap: 0.3rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.75rem;
     }
 
-    .stat-value {
-      font-size: 1.6rem;
+    .meta-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      display: grid;
+      gap: 0.15rem;
+    }
+
+    .meta-label {
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .meta-value {
+      font-size: 1.3rem;
       font-weight: 700;
       color: #fff;
+      letter-spacing: -0.01em;
     }
 
-    .stat-label {
+    .meta-note {
       color: var(--muted);
-      letter-spacing: 0.02em;
+      font-size: 0.95rem;
     }
 
     section {
@@ -301,6 +325,10 @@
       box-shadow: 0 0 10px var(--glow);
     }
 
+    .points-grid .card {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
     .timeline {
       display: grid;
       gap: 0.9rem;
@@ -332,6 +360,36 @@
       margin: 0.2rem 0 0;
       color: var(--muted);
       line-height: 1.6;
+    }
+
+    .time {
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: linear-gradient(150deg, #82f3d0, #7ae0ff);
+      display: grid;
+      place-items: center;
+      color: #041420;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .venue {
+      display: grid;
+      gap: 0.4rem;
     }
 
     .links {
@@ -380,93 +438,152 @@
     <span class="glow three"></span>
     <div class="grid-lines"></div>
 
-    <header>
-      <div class="badge"><span class="badge-dot"></span> Portfolio / Playground</div>
-      <h1><span class="gradient-text">ようこそ</span>、創ることが好きなデベロッパーです。</h1>
-      <p class="lead">アイデアを光らせるUI、スケールするアーキテクチャ、チームで回せる開発体験を設計しています。プロトタイプから本番運用まで、デザインとコードの間を滑らかに橋渡しするのが得意です。</p>
-      <div class="actions">
-        <a class="btn primary" href="https://github.com/" target="_blank" rel="noreferrer">GitHubを見る</a>
-        <a class="btn" href="#projects">最近のしごと</a>
+    <header class="hero">
+      <div class="badge"><span class="badge-dot"></span> 実践型1DAY / ケース面接×IR読み解き</div>
+      <div class="hero-top">
+        <h1><span class="gradient-text">コンサル道場</span> — 戦略思考を1日で叩き込む</h1>
+        <p class="lead">KPMG・PwC代表取締役を歴任した椎名が、ケース面接でも現場の提案でも通用する「問いの立て方・答えの出し方」を直接指導。フェルミ推定から有価証券報告書の読み解き、実践ワークと懇親会まで詰め込んだ1日集中プログラムです。</p>
       </div>
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-value">15+</div>
-          <div class="stat-label">リリースしたプロダクト</div>
+      <div class="meta-grid">
+        <div class="meta-card">
+          <div class="meta-label">日程・時間</div>
+          <div class="meta-value">11/29（土）10:00〜17:00</div>
+          <div class="meta-note">懇親会 17:00〜18:00</div>
         </div>
-        <div class="stat">
-          <div class="stat-value">12年</div>
-          <div class="stat-label">Web開発経験</div>
+        <div class="meta-card">
+          <div class="meta-label">定員 / 参加費</div>
+          <div class="meta-value">40名 / 3,000円</div>
+          <div class="meta-note">先着順・事前支払い</div>
         </div>
-        <div class="stat">
-          <div class="stat-value">SRE/FE</div>
-          <div class="stat-label">強みの領域</div>
+        <div class="meta-card">
+          <div class="meta-label">会場</div>
+          <div class="meta-value">Basis Point 新橋銀座口店 3階</div>
+          <div class="meta-note">大会議室（新橋駅徒歩3分）</div>
         </div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="#entry">参加申し込み</a>
+        <a class="btn" href="#agenda">プログラムを見る</a>
       </div>
     </header>
 
-    <section id="focus">
-      <div class="section-title">Focus</div>
-      <div class="grid">
+    <section id="points">
+      <div class="section-title">参加のポイント</div>
+      <div class="grid points-grid">
         <div class="card">
-          <div class="pill">UI/UX</div>
-          <h3>心地よいプロダクト体験</h3>
-          <p>余白・タイポグラフィ・トーンを丁寧に設計し、ブランドの軸が通ったUIを素早く形にします。</p>
+          <div class="pill">Point 01</div>
+          <h3>椎名茂の直講演</h3>
+          <p>KPMG・PwC代表取締役を歴任した椎名が、リアルな事例を交えながらコンサルの思考術を伝授。</p>
         </div>
         <div class="card">
-          <div class="pill">Architecture</div>
-          <h3>持続可能なコードベース</h3>
-          <p>モジュール設計やリリースフローの整備で、チームが安心して開発できる土台を作ります。</p>
+          <div class="pill">Point 02</div>
+          <h3>フェルミ推定を体で覚える</h3>
+          <p>ケース面接の肝となるフェルミ推定を演習形式で実施。構造化→仮説→計算の流れを一気に習得。</p>
         </div>
         <div class="card">
-          <div class="pill">Delivery</div>
-          <h3>計測と改善のサイクル</h3>
-          <p>データを見ながら高速に改善。CI/CDと監視で、仕組みごと磨いていきます。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="section-title">Highlights</div>
-      <div class="grid">
-        <div class="card">
-          <h3>Design System Revamp</h3>
-          <p>コンポーネント指向のデザインシステムを刷新し、アクセシビリティとブランド一貫性を両立。</p>
+          <div class="pill">Point 03</div>
+          <h3>有価証券報告書を武器に</h3>
+          <p>業界分析・競合比較・企業課題の見立てをIR資料から読み解くワークで、情報の拾い方と解釈を学ぶ。</p>
         </div>
         <div class="card">
-          <h3>Realtime Collaboration</h3>
-          <p>WebSocketとCRDTでリアルタイム共同編集を実装。レイテンシと整合性を両立させる仕組みを設計。</p>
-        </div>
-        <div class="card">
-          <h3>Cloud Native Migration</h3>
-          <p>レガシー環境をKubernetesに移行し、SLOベースの運用と自動化を整備してサービスを安定化。</p>
+          <div class="pill">Point 04</div>
+          <h3>懇親会で深掘り相談</h3>
+          <p>講師に加え、元PwCパートナーや慶應スタートアップ創業メンバーも参加。キャリア・ビジネスの壁打ちOK。</p>
         </div>
       </div>
     </section>
 
-    <section id="timeline">
-      <div class="section-title">Recent</div>
+    <section id="agenda">
+      <div class="section-title">プログラム</div>
       <div class="timeline">
         <div class="step">
-          <h4>2024 — プロダクトリード</h4>
-          <p>新規B2B SaaSの立ち上げで、要件整理からUI/インフラ設計、チームの開発プロセス設計まで担当。</p>
+          <div class="time">10:00</div>
+          <h4>オープニング・アイスブレイク</h4>
+          <p>1日の流れと狙いを共有し、ケース演習の前提を揃えます。</p>
         </div>
         <div class="step">
-          <h4>2023 — DX基盤の整備</h4>
-          <p>モノレポ化とLint/CIの統合、リリースフローの自動化でリードタイムを半減。</p>
+          <div class="time">10:15</div>
+          <h4>コンサルティング業界とは（椎名講演）</h4>
+          <p>業界構造、プロジェクトの実際、求められる視座を解説。</p>
         </div>
         <div class="step">
-          <h4>2022 — グロース施策</h4>
-          <p>ABテスト基盤とイベント設計を刷新し、主要KPIを安定的に改善できる仕組みに。</p>
+          <div class="time">11:30</div>
+          <h4>フェルミ推定演習</h4>
+          <p>問題分解と前提置きの型を学び、少人数で即実践。</p>
+        </div>
+        <div class="step">
+          <div class="time">13:30</div>
+          <h4>有価証券報告書の読み方</h4>
+          <p>業界分析・競合比較・企業分析・課題抽出をIR資料から行うワーク。</p>
+        </div>
+        <div class="step">
+          <div class="time">15:30</div>
+          <h4>実践演習ワーク</h4>
+          <p>ケース課題に取り組み、構造化・示唆出し・プレゼンまで通しで実践。</p>
+        </div>
+        <div class="step">
+          <div class="time">17:00</div>
+          <h4>懇親会（1時間）</h4>
+          <p>キャリア相談、プライベートの話、ビジネスアイデアの壁打ちなどフリートーク。</p>
         </div>
       </div>
     </section>
 
-    <section id="links">
-      <div class="section-title">Connect</div>
-      <div class="links">
-        <a class="chip" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="chip" href="mailto:hello@example.com">Email</a>
-        <a class="chip" href="#focus">Services</a>
+    <section id="topics">
+      <div class="section-title">扱うテーマ</div>
+      <div class="grid">
+        <div class="card">
+          <h3>業界分析のフレーム</h3>
+          <p>市場規模、成長ドライバー、収益構造、プレイヤー構図を整理する視点。</p>
+        </div>
+        <div class="card">
+          <h3>競合比較と差別化</h3>
+          <p>IR・決算資料から強み/弱みを抽出し、勝ち筋を仮説化するプロセス。</p>
+        </div>
+        <div class="card">
+          <h3>課題設定から打ち手設計</h3>
+          <p>課題の優先度付けと、インパクト×実現性での打ち手評価をワーク化。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="speaker">
+      <div class="section-title">講師・運営</div>
+      <div class="card">
+        <div class="profile">
+          <div class="avatar">SM</div>
+          <div>
+            <h3>椎名 茂</h3>
+            <p class="meta-note">元KPMG・PwC代表取締役 / コンサルタント育成・組織変革を専門</p>
+          </div>
+        </div>
+        <p>戦略・M&A・業務改革領域で数百件のプロジェクトを牽引。採用・育成にも深く関わり、ケース面接の設計や若手の伴走を多数経験。現場で求められる「伝わるロジック」と「スピード感」を重視した指導が持ち味。</p>
+      </div>
+    </section>
+
+    <section id="venue">
+      <div class="section-title">会場</div>
+      <div class="card venue">
+        <h3>Basis Point 新橋銀座口店 3階 大会議室</h3>
+        <p class="meta-note">東京都港区（新橋駅 銀座口 徒歩3分）</p>
+        <p>駅近でアクセス良好。プロジェクター・ホワイトボード完備の大会議室です。</p>
+        <div class="links">
+          <a class="chip" href="https://maps.google.com/?q=Basis+Point+新橋銀座口店" target="_blank" rel="noreferrer">Google Maps</a>
+          <a class="chip" href="#entry">申し込みへ進む</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="entry">
+      <div class="section-title">参加申し込み</div>
+      <div class="card">
+        <h3>先着40名 / 参加費 3,000円</h3>
+        <p>下記ボタンからお申し込みください。定員になり次第締切となります。</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:hello@example.com?subject=コンサル道場申し込み&body=お名前・ご所属・ご連絡先を記入の上、ご連絡ください。">メールで申し込む</a>
+          <a class="btn" href="#points">内容をもう一度見る</a>
+        </div>
+        <p class="meta-note">※決済方法のご案内を折り返しお送りします。キャンセルポリシー等はメールでご確認ください。</p>
       </div>
     </section>
   </main>
