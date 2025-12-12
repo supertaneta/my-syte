@@ -1,11 +1,11 @@
 :root {
-  --bg: #060912;
-  --panel: rgba(18, 24, 38, 0.72);
-  --glow: #7ae0ff;
-  --glow-2: #ffd166;
-  --muted: #b8c7e3;
-  --text: #f6f7fb;
-  --accent: #82f3d0;
+  --bg: #04060d;
+  --panel: rgba(12, 15, 25, 0.8);
+  --glow: #6ddcff;
+  --glow-2: #9b8cff;
+  --muted: #c5d3ff;
+  --text: #f7f9ff;
+  --accent: #ffde6b;
   --hero-pan-x: 0px;
   --hero-pan-y: 0px;
 }
@@ -18,9 +18,11 @@ body {
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at 20% 20%, rgba(130, 243, 208, 0.12), transparent 30%),
-    radial-gradient(circle at 80% 10%, rgba(122, 224, 255, 0.2), transparent 32%),
-    radial-gradient(circle at 50% 80%, rgba(255, 209, 102, 0.18), transparent 30%),
+  background:
+    radial-gradient(circle at 20% 20%, rgba(109, 220, 255, 0.18), transparent 32%),
+    radial-gradient(circle at 78% 12%, rgba(155, 140, 255, 0.18), transparent 30%),
+    radial-gradient(circle at 50% 78%, rgba(255, 222, 107, 0.16), transparent 32%),
+    url("space.png") center/cover fixed,
     var(--bg);
   color: var(--text);
   padding: 2.5rem 1.5rem 3.5rem;
@@ -66,13 +68,13 @@ main {
   position: relative;
   max-width: 1200px;
   margin: 0 auto 2.2rem;
-  height: min(90vh, 840px);
+  height: min(82vh, 760px);
   border-radius: 26px;
   overflow: hidden;
   isolation: isolate;
-  background: #0b111c;
+  background: #070a13;
   box-shadow:
-    0 20px 80px rgba(0, 0, 0, 0.55),
+    0 20px 80px rgba(0, 0, 0, 0.6),
     0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
@@ -101,9 +103,9 @@ main {
   z-index: 1;
   height: 100%;
   display: grid;
-  align-content: end;
-  gap: 1.2rem;
-  padding: clamp(1.8rem, 4vw, 3rem);
+  align-content: space-between;
+  gap: 1.4rem;
+  padding: clamp(1.8rem, 4vw, 3.2rem);
 }
 
 .landing-hero h1 {
@@ -138,7 +140,7 @@ main {
 
 .hero-cta {
   display: flex;
-  gap: 0.65rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
 
@@ -254,10 +256,10 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.8rem;
+  padding: 0.35rem 0.9rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   font-size: 0.95rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -340,9 +342,9 @@ h1 {
 }
 
 .btn.primary {
-  background: linear-gradient(120deg, #82f3d0, #7ae0ff);
-  color: #051019;
-  box-shadow: 0 12px 30px rgba(122, 224, 255, 0.32);
+  background: linear-gradient(120deg, #6ddcff, #9b8cff);
+  color: #04060d;
+  box-shadow: 0 12px 30px rgba(155, 140, 255, 0.28);
 }
 
 .btn:hover {
@@ -418,7 +420,7 @@ section {
   content: "";
   width: 28px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--glow));
+  background: linear-gradient(90deg, transparent, var(--glow-2));
   opacity: 0.8;
 }
 
@@ -567,6 +569,43 @@ section {
 .chip:hover {
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.08);
+}
+
+.tag-marquee {
+  display: flex;
+  overflow: hidden;
+  gap: 1rem;
+  mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.65rem 0;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tag-track {
+  display: flex;
+  gap: 0.8rem;
+  animation: marquee 18s linear infinite;
+}
+
+.tag {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .reveal {
